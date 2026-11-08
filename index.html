@@ -1,279 +1,462 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Помогаем гостиницам и гостевым домам разбирать отзывы гостей, находить повторяющиеся проблемы и улучшать сервис.">
-  <meta name="theme-color" content="#101a1b">
-  <title>Отзывы под контролем — разбор отзывов для гостиниц</title>
-  <style>
-    :root {
-      --bg: #101a1b;
-      --panel: #172526;
-      --panel2: #1c2d2d;
-      --text: #f2f5ef;
-      --muted: #a9b9b1;
-      --accent: #c8f169;
-      --accent-dark: #24351b;
-      --line: rgba(235,245,232,.12);
-      --radius: 22px;
-      --max: 1120px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; background:
-        radial-gradient(ellipse at 78% 2%, rgba(200,241,105,.11), transparent 32%),
-        radial-gradient(ellipse at 0% 45%, rgba(69,131,117,.12), transparent 35%),
-        var(--bg);
-      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
-    .nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0; gap:20px; }
-    .brand { display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.4px; }
-    .brand-mark { width:35px; height:35px; border-radius:12px; background:var(--accent); color:#152018; display:grid; place-items:center; font-weight:900; }
-    .nav-links { display:flex; align-items:center; gap:27px; color:var(--muted); font-size:14px; }
-    .nav-links a:hover { color:var(--text); }
-    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; border:0; border-radius:999px; padding:14px 21px; font-weight:750; font-size:14px; cursor:pointer; transition:.2s ease; }
-    .btn-primary { background:var(--accent); color:#172117; box-shadow:0 8px 28px rgba(200,241,105,.13); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 34px rgba(200,241,105,.22); }
-    .btn-ghost { border:1px solid var(--line); color:var(--text); background:rgba(255,255,255,.025); }
-    .btn-ghost:hover { background:rgba(255,255,255,.07); }
-    .hero { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:55px; padding:72px 0 90px; }
-    .eyebrow { color:var(--accent); font-size:12px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; display:flex; align-items:center; gap:9px; }
-    .eyebrow:before { content:""; width:22px; height:1px; background:var(--accent); }
-    h1 { font-size:clamp(42px,6vw,70px); line-height:1.02; letter-spacing:-3.4px; margin:20px 0 23px; max-width:680px; }
-    h1 span { color:var(--accent); }
-    .lead { color:var(--muted); font-size:18px; max-width:560px; margin:0 0 30px; }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
-    .note { color:#82958b; font-size:12px; margin-top:17px; }
-    .mockup { background:linear-gradient(145deg,#223535,#172525); border:1px solid rgba(255,255,255,.13); border-radius:28px; padding:23px; box-shadow:0 35px 90px rgba(0,0,0,.28); transform:rotate(1deg); }
-    .mock-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
-    .mock-title { font-size:14px; font-weight:750; }
-    .pill { border-radius:999px; padding:6px 10px; font-size:10px; color:var(--accent); background:rgba(200,241,105,.1); border:1px solid rgba(200,241,105,.2); }
-    .score { display:flex; align-items:end; gap:12px; padding:17px 0 20px; border-bottom:1px solid var(--line); }
-    .score strong { font-size:48px; line-height:1; letter-spacing:-2px; }
-    .score span { color:var(--muted); font-size:12px; padding-bottom:5px; }
-    .bars { display:grid; gap:15px; padding:22px 0; }
-    .bar-top { display:flex; justify-content:space-between; font-size:12px; margin-bottom:7px; }
-    .bar-top span:last-child { color:var(--muted); }
-    .track { height:7px; border-radius:20px; background:#344747; overflow:hidden; }
-    .fill { height:100%; border-radius:20px; background:var(--accent); }
-    .mock-foot { border-radius:15px; background:rgba(200,241,105,.08); padding:13px 14px; color:#d9e8c5; font-size:12px; }
-    section { padding:78px 0; }
-    .section-head { max-width:660px; margin-bottom:34px; }
-    h2 { font-size:clamp(30px,4vw,45px); line-height:1.1; letter-spacing:-1.8px; margin:12px 0; }
-    .section-head p { color:var(--muted); margin:0; font-size:16px; }
-    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
-    .card { border:1px solid var(--line); border-radius:var(--radius); background:rgba(255,255,255,.035); padding:24px; }
-    .num { color:var(--accent); font-size:12px; font-weight:800; letter-spacing:1px; }
-    .card h3 { font-size:18px; margin:14px 0 8px; letter-spacing:-.4px; }
-    .card p { color:var(--muted); font-size:14px; margin:0; }
-    .offer { display:grid; grid-template-columns:1fr .78fr; gap:30px; align-items:center; background:linear-gradient(120deg,#1b2b2b,#1a2925); border:1px solid var(--line); border-radius:28px; padding:34px; }
-    .checklist { list-style:none; padding:0; margin:23px 0 0; display:grid; gap:12px; }
-    .checklist li { display:flex; gap:11px; color:#dce6df; font-size:14px; }
-    .check { color:var(--accent); font-weight:900; }
-    .price-box { background:var(--accent); color:#172117; border-radius:22px; padding:27px; }
-    .price-label { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px; opacity:.72; }
-    .price { font-size:48px; font-weight:850; letter-spacing:-2px; line-height:1.15; margin:9px 0; }
-    .price-box p { font-size:13px; opacity:.75; margin:0 0 20px; }
-    .price-box .btn { background:#172117; color:#f3f7ee; width:100%; }
-    .sample-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
-    .sample { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:22px; }
-    .sample small { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:1px; }
-    .sample h3 { margin:10px 0; font-size:18px; }
-    .sample p { margin:0; color:var(--muted); font-size:14px; }
-    .sample strong { color:var(--text); }
-    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; counter-reset:step; }
-    .step { padding:23px; border-top:1px solid var(--accent); background:rgba(255,255,255,.025); border-radius:0 0 18px 18px; }
-    .step b { color:var(--accent); font-size:12px; letter-spacing:1px; }
-    .step h3 { margin:11px 0 7px; font-size:17px; }
-    .step p { margin:0; color:var(--muted); font-size:14px; }
-    .faq { max-width:800px; }
-    details { border-bottom:1px solid var(--line); padding:18px 0; }
-    summary { cursor:pointer; font-weight:700; list-style:none; display:flex; justify-content:space-between; gap:20px; }
-    summary:after { content:"+"; color:var(--accent); font-size:20px; line-height:1; }
-    details[open] summary:after { content:"−"; }
-    details p { color:var(--muted); font-size:14px; margin:12px 0 0; max-width:700px; }
-    .cta { text-align:center; padding:55px 25px; background:linear-gradient(135deg,rgba(200,241,105,.12),rgba(255,255,255,.025)); border:1px solid var(--line); border-radius:28px; }
-    .cta h2 { max-width:650px; margin:12px auto; }
-    .cta p { color:var(--muted); max-width:550px; margin:0 auto 23px; }
-    footer { padding:28px 0 40px; color:#82958b; font-size:12px; display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); margin-top:75px; }
-    .disclaimer { max-width:620px; }
-    @media (max-width:800px) {
-      .nav-links { display:none; }
-      .hero { grid-template-columns:1fr; gap:38px; padding:50px 0 65px; }
-      .mockup { transform:none; }
-      .grid3,.steps { grid-template-columns:1fr; }
-      .offer { grid-template-columns:1fr; padding:23px; }
-      .sample-grid { grid-template-columns:1fr; }
-      section { padding:58px 0; }
-      footer { flex-direction:column; }
-    }
-    @media (max-width:480px) {
-      .wrap { width:min(var(--max),calc(100% - 28px)); }
-      .nav { padding:18px 0; }
-      .nav .btn { padding:11px 14px; font-size:12px; }
-      h1 { letter-spacing:-2px; }
-      .lead { font-size:16px; }
-      .hero-actions .btn { width:100%; }
-      .mockup { padding:17px; }
-      .score strong { font-size:40px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Анализ отзывов для гостиниц и гостевых домов">
+<meta name="theme-color" content="#080f1c">
+<title>Отзывы под контролем</title>
+<style>
+:root {
+  --bg:#080f1c;
+  --panel:#101b2d;
+  --text:#f4f7fc;
+  --muted:#a8b5c8;
+  --accent:#8ab8ff;
+  --line:rgba(190,211,242,.13);
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background-color:var(--bg);
+ background-image:
+ linear-gradient(rgba(129,166,220,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(129,166,220,.035) 1px,transparent 1px),
+ radial-gradient(ellipse at 78% 8%,rgba(50,112,205,.23),transparent 34%),
+ linear-gradient(180deg,#080f1c,#0a1424 52%,#070d18);
+ background-size:54px 54px,54px 54px,auto,auto;
+ color:var(--text);
+ font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+ line-height:1.6;
+}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 56px));margin:auto}
+.nav{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:20px 24px;margin-top:14px;
+ border:1px solid var(--line);border-radius:18px;
+ background:rgba(10,20,36,.8);
+ gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:12px;letter-spacing:1px}
+.brand-mark{
+ width:38px;height:38px;border-radius:11px;
+ background:linear-gradient(145deg,#8fc2ff,#4389ed);
+ color:#071426;display:grid;place-items:center;font-weight:950;
+}
+.nav-links{display:flex;gap:28px;color:var(--muted);font-size:12px}
+.nav-links a:hover{color:white}
+.btn{
+ display:inline-flex;justify-content:center;align-items:center;
+ padding:14px 20px;border-radius:10px;
+ font-weight:750;font-size:14px;cursor:pointer;
+ transition:.25s;
+}
+.btn-primary{
+ background:linear-gradient(115deg,#b4d5ff,#6ca7f5);
+ color:#071426;box-shadow:0 9px 32px rgba(71,139,237,.23);
+}
+.btn-primary:hover{transform:translateY(-3px)}
+.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.hero{
+ display:grid;grid-template-columns:1.08fr .92fr;
+ align-items:center;gap:76px;padding:92px 0 104px;min-height:660px;
+}
+.eyebrow{
+ color:var(--accent);font-size:10px;font-weight:850;
+ letter-spacing:2px;text-transform:uppercase;
+}
+h1{font-size:clamp(48px,5.4vw,76px);line-height:1.02;letter-spacing:-4px;margin:25px 0}
+h1 span{
+ background:linear-gradient(100deg,#f1f6ff,#91bdff,#5d9bf0);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lead{font-size:16px;line-height:1.8;color:var(--muted);max-width:540px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.note{color:#8192aa;font-size:11px;margin-top:17px}
+.mockup{
+ padding:29px;border-radius:23px;
+ background:linear-gradient(145deg,#172841,#0a1526);
+ border:1px solid rgba(155,190,239,.24);
+ box-shadow:0 45px 110px rgba(0,0,0,.46);
+ transform:perspective(1200px) rotateY(-5deg);
+ transition:.4s;
+}
+.mockup:hover{transform:perspective(1200px) rotateY(0) translateY(-6px)}
+.mock-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:22px}
+.mock-title{font-size:13px;font-weight:750}
+.pill{font-size:8px;color:#9cc8ff;background:#183251;padding:6px 10px;border-radius:30px}
+.score{display:flex;align-items:end;gap:12px;padding:17px 0;border-bottom:1px solid var(--line)}
+.score strong{font-size:58px;color:#a6ccff;line-height:1}
+.score span{font-size:12px;color:var(--muted)}
+.bars{display:grid;gap:15px;padding:22px 0}
+.bar-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px}
+.bar-top span:last-child{color:var(--muted)}
+.track{height:6px;background:#263750;border-radius:20px;overflow:hidden}
+.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#4e91ee,#8bc1ff);transform-origin:left;animation:grow 1.3s both}
+.mock-foot{padding:13px;background:rgba(83,151,243,.1);border-radius:10px;color:#c8dcf8;font-size:12px}
+section{padding:88px 0}
+.section-head{max-width:680px;margin-bottom:39px}
+h2{font-size:clamp(32px,3.8vw,48px);line-height:1.12;letter-spacing:-1.8px;margin:12px 0}
+.section-head p{color:var(--muted);font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card,.sample,.step{
+ border:1px solid var(--line);border-radius:20px;
+ background:linear-gradient(145deg,#142238,#0d192b);
+ padding:28px;transition:.3s;
+}
+.card:hover,.sample:hover,.step:hover{transform:translateY(-5px);border-color:#547eb4}
+.num{color:var(--accent);font-size:11px;font-weight:850;letter-spacing:1px}
+.card h3,.step h3,.sample h3{font-size:18px;margin:14px 0 8px}
+.card p,.step p,.sample p{color:var(--muted);font-size:14px;margin:0}
+.offer{
+ display:grid;grid-template-columns:1fr .78fr;gap:48px;
+ align-items:center;padding:44px;border:1px solid var(--line);
+ border-radius:23px;background:linear-gradient(120deg,#13253d,#0b1728);
+}
+.checklist{list-style:none;padding:0;margin:23px 0;display:grid;gap:12px}
+.checklist li{font-size:14px;color:#dce7f7}
+.check{color:var(--accent);margin-right:9px}
+.price-box{
+ padding:34px;border-radius:20px;
+ background:linear-gradient(145deg,#c0dcff,#76aaf2);
+ color:#071426;
+}
+.price-label{font-size:11px;font-weight:850;letter-spacing:1px}
+.price{font-size:48px;font-weight:900;letter-spacing:-2px}
+.price-box p{font-size:13px;opacity:.8}
+.price-box .btn{background:#0b1a2e;color:white;width:100%}
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sample{position:relative}
+.sample small{color:var(--accent);font-weight:850;font-size:10px;letter-spacing:1px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step b{color:var(--accent);font-size:11px}
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--line);padding:21px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";color:var(--accent);font-size:20px}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);font-size:14px}
+.cta{
+ text-align:center;padding:70px 30px;border-radius:23px;
+ border:1px solid var(--line);
+ background:radial-gradient(ellipse at 50% 0%,rgba(89,151,237,.2),transparent 58%),#102039;
+}
+.cta p{color:var(--muted);max-width:570px;margin:0 auto 25px}
+#leadForm{max-width:560px;margin:auto;text-align:left}
+#leadForm label{display:block;font-size:12px;color:#b9c8dc;margin:12px 0 7px}
+#leadForm input{
+ width:100%;padding:16px;border-radius:11px;
+ border:1px solid var(--line);background:#0b1728;
+ color:white;font:inherit;outline:none;
+}
+#leadForm input:focus{border-color:var(--accent)}
+#leadForm button{width:100%;margin-top:16px}
+footer{
+ padding:34px 0 40px;color:#8191a8;font-size:11px;
+ display:flex;justify-content:space-between;gap:20px;
+ border-top:1px solid var(--line);margin-top:75px;
+}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(max-width:800px){
+ .wrap{width:calc(100% - 36px)}
+ .nav-links{display:none}
+ .hero{grid-template-columns:1fr;gap:35px;padding:55px 0}
+ .grid3,.steps,.sample-grid,.offer{grid-template-columns:1fr}
+ .offer{padding:24px}
+ section{padding:60px 0}
+ .mockup{transform:none}
+ footer{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
-  <header class="wrap">
-    <nav class="nav">
-      <a class="brand" href="#">
-        <span class="brand-mark">ОК</span>
-        <span>ОТЗЫВЫ ПОД КОНТРОЛЕМ</span>
-      </a>
-      <div class="nav-links">
-        <a href="#service">Услуга</a><a href="#example">Пример</a><a href="#process">Как работаем</a><a href="#faq">Вопросы</a>
-      </div>
-      <a class="btn btn-ghost" href="#contact">Обсудить аудит ↗</a>
-    </nav>
-  </header>
+<header class="wrap">
+<nav class="nav">
+<a class="brand" href="#">
+<span class="brand-mark">ОК</span>
+<span>ОТЗЫВЫ ПОД КОНТРОЛЕМ</span>
+</a>
+<div class="nav-links">
+<a href="#service">Услуга</a>
+<a href="#example">Пример</a>
+<a href="#process">Как работаем</a>
+<a href="#faq">Вопросы</a>
+</div>
+<a class="btn btn-ghost" href="#contact">Обсудить аудит ↗</a>
+</nav>
+</header> <main>
+<div class="wrap">
 
-  <main>
-    <div class="wrap">
-      <section class="hero">
-        <div>
-          <div class="eyebrow">Для гостиниц · гостевых домов · турбаз</div>
-          <h1>Отзывы гостей.<br><span>Понятная картина</span><br>вашего сервиса.</h1>
-          <p class="lead">Находим повторяющиеся жалобы, показываем сильные стороны и готовим рекомендации, которые помогают понять, что стоит улучшить в опыте гостей.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Получить мини-разбор <span>↗</span></a>
-            <a class="btn btn-ghost" href="#example">Посмотреть пример</a>
-          </div>
-          <div class="note">Работаем с публичными отзывами. Без накруток и выдуманных оценок.</div>
-        </div>
-        <div class="mockup" aria-label="Пример аналитического отчёта">
-          <div class="mock-head"><div class="mock-title">Сводка по отзывам</div><span class="pill">ДЕМО · УСЛОВНЫЕ ДАННЫЕ</span></div>
-          <div class="score"><strong>20</strong><span>условных отзывов<br>в демонстрационной выборке</span></div>
-          <div class="bars">
-            <div><div class="bar-top"><span>Расположение и виды</span><span>8 упоминаний</span></div><div class="track"><div class="fill" style="width:88%"></div></div></div>
-            <div><div class="bar-top"><span>Гостеприимство</span><span>6 упоминаний</span></div><div class="track"><div class="fill" style="width:66%"></div></div></div>
-            <div><div class="bar-top"><span>Шум</span><span>5 упоминаний</span></div><div class="track"><div class="fill" style="width:54%"></div></div></div>
-            <div><div class="bar-top"><span>Wi-Fi</span><span>4 упоминания</span></div><div class="track"><div class="fill" style="width:43%"></div></div></div>
-          </div>
-          <div class="mock-foot">Вывод: сильные стороны заметны, а повторяющиеся замечания можно превратить в конкретный план улучшений.</div>
-        </div>
-      </section>
+<section class="hero">
+<div>
+<div class="eyebrow">Для гостиниц и гостевых домов</div>
+<h1>Отзывы гостей.<br><span>Под контролем.</span></h1>
+<p class="lead">Помогаем владельцам гостиниц и гостевых домов понять, что гости действительно думают о сервисе, какие проблемы повторяются и что можно улучшить.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contact">Заказать разбор отзывов ↗</a>
+<a class="btn btn-ghost" href="#service">Узнать подробнее</a>
+</div>
+<p class="note">Без сложных отчётов. Только понятные выводы и конкретные рекомендации.</p>
+</div>
 
-      <section id="service">
-        <div class="section-head">
-          <div class="eyebrow">Что получает владелец</div>
-          <h2>Не просто список отзывов.<br>А выводы для дела.</h2>
-          <p>Собираем повторяющиеся сигналы из публичных отзывов и переводим их в понятные действия для владельца или управляющего.</p>
-        </div>
-        <div class="grid3">
-          <article class="card"><div class="num">01 / СИЛЬНЫЕ СТОРОНЫ</div><h3>Что ценят гости</h3><p>Выделяем то, за что объект хвалят чаще всего: расположение, чистоту, общение, атмосферу и другие преимущества.</p></article>
-          <article class="card"><div class="num">02 / ТОЧКИ РОСТА</div><h3>Что повторно раздражает</h3><p>Группируем похожие жалобы, чтобы увидеть не единичный случай, а повторяющуюся проблему.</p></article>
-          <article class="card"><div class="num">03 / ПЛАН ДЕЙСТВИЙ</div><h3>Что можно улучшить</h3><p>Готовим конкретные рекомендации и варианты корректных ответов на отзывы гостей.</p></article>
-        </div>
-      </section>
+<div class="mockup">
+<div class="mock-head">
+<div class="mock-title">Аналитика отзывов гостей</div>
+<div class="pill">ПРИМЕР ОТЧЁТА</div>
+</div>
+<div class="score">
+<strong>4.8</strong>
+<span>Средняя оценка<br>в условном примере</span>
+</div>
+<div class="bars">
+<div>
+<div class="bar-top"><span>Чистота</span><span>92%</span></div>
+<div class="track"><div class="fill" style="width:92%"></div></div>
+</div>
+<div>
+<div class="bar-top"><span>Обслуживание</span><span>86%</span></div>
+<div class="track"><div class="fill" style="width:86%"></div></div>
+</div>
+<div>
+<div class="bar-top"><span>Расположение</span><span>95%</span></div>
+<div class="track"><div class="fill" style="width:95%"></div></div>
+</div>
+<div>
+<div class="bar-top"><span>Комфорт</span><span>78%</span></div>
+<div class="track"><div class="fill" style="width:78%"></div></div>
+</div>
+</div>
+<div class="mock-foot">Пример: гости чаще всего отмечают чистоту и расположение. Есть смысл отдельно изучить отзывы о комфорте.</div>
+</div>
+</section>
 
-      <section>
-        <div class="offer">
-          <div>
-            <div class="eyebrow">Разовая услуга</div>
-            <h2>Аудит до 50 публичных отзывов</h2>
-            <p class="lead" style="font-size:15px;margin:0">Компактный отчёт, который помогает увидеть общую картину без необходимости перечитывать десятки комментариев вручную.</p>
-            <ul class="checklist">
-              <li><span class="check">✓</span> Анализ до 50 отзывов из доступных источников</li>
-              <li><span class="check">✓</span> 5 главных сильных сторон и проблем</li>
-              <li><span class="check">✓</span> Повторяющиеся темы и наблюдения</li>
-              <li><span class="check">✓</span> До 10 черновиков ответов на отзывы</li>
-              <li><span class="check">✓</span> 5 практических рекомендаций</li>
-              <li><span class="check">✓</span> Отчёт в PDF</li>
-            </ul>
-          </div>
-          <div class="price-box">
-            <div class="price-label">Стартовая цена</div>
-            <div class="price">1 490 ₽</div>
-            <p>Для первых заказов. Срок — до 48 часов после согласования объёма и получения ссылок.</p>
-            <a class="btn" href="#contact">Запросить мини-разбор ↗</a>
-          </div>
-        </div>
-      </section>
+<section id="service">
+<div class="section-head">
+<div class="eyebrow">Что мы делаем</div>
+<h2>Отзывы — это больше, чем просто оценки</h2>
+<p>Мы собираем повторяющиеся мнения гостей в понятную картину, чтобы владельцу было проще принимать решения.</p>
+</div>
+<div class="grid3">
+<article class="card reveal">
+<div class="num">01 / АНАЛИЗ</div>
+<h3>Изучаем отзывы</h3>
+<p>Разбираем доступные отзывы и выделяем основные темы, которые чаще всего упоминают гости.</p>
+</article>
+<article class="card reveal">
+<div class="num">02 / ПРОБЛЕМЫ</div>
+<h3>Находим повторения</h3>
+<p>Показываем, на что жалуются гости, что им нравится и какие моменты стоит проверить.</p>
+</article>
+<article class="card reveal">
+<div class="num">03 / РЕШЕНИЯ</div>
+<h3>Предлагаем улучшения</h3>
+<p>Готовим практические рекомендации и варианты ответов на отзывы в подходящем тоне.</p>
+</article>
+</div>
+</section>
 
-      <section id="example">
-        <div class="section-head">
-          <div class="eyebrow">Как выглядит результат</div>
-          <h2>Пример выводов из отчёта</h2>
-          <p>Ниже — демонстрация на вымышленных данных. В реальном аудите каждый вывод проверяется по исходным отзывам.</p>
-        </div>
-        <div class="sample-grid">
-          <article class="sample"><small>Наблюдение</small><h3>Гостям нравится расположение</h3><p>В условной выборке это упоминается чаще других положительных тем. Стоит заметнее показать преимущества места в описании объекта.</p></article>
-          <article class="sample"><small>Наблюдение</small><h3>Повторяется жалоба на связь</h3><p>Несколько гостей отмечают нестабильный Wi-Fi. Рекомендуется проверить покрытие и честно описать возможности интернета до бронирования.</p></article>
-          <article class="sample"><small>Рекомендация</small><h3>Уточнить дорогу до объекта</h3><p>Добавить ориентиры, маршрут и инструкцию для гостей, которые приезжают впервые.</p></article>
-          <article class="sample"><small>Черновик ответа</small><h3>Спокойно ответить на замечание</h3><p>«Спасибо, что сообщили. Нам жаль, что это повлияло на ваш отдых. Проверим ситуацию и постараемся сделать пребывание комфортнее».</p></article>
-        </div>
-      </section>
+<section>
+<div class="offer reveal">
+<div>
+<div class="eyebrow">Основная услуга</div>
+<h2>Понятный аудит отзывов вашего объекта</h2>
+<p class="lead">Вместо десятков разрозненных комментариев вы получаете структурированный разбор того, что гости замечают чаще всего.</p>
+<ul class="checklist">
+<li><span class="check">✓</span> Анализ до 50 доступных отзывов</li>
+<li><span class="check">✓</span> Сильные стороны и повторяющиеся проблемы</li>
+<li><span class="check">✓</span> До 10 вариантов ответов на отзывы</li>
+<li><span class="check">✓</span> 5 практических рекомендаций</li>
+<li><span class="check">✓</span> Итоговый отчёт в PDF</li>
+</ul>
+</div>
+<div class="price-box">
+<div class="price-label">Стартовый аудит</div>
+<div class="price">1 490 ₽</div>
+<p>Стоимость стартового пакета. Срок выполнения согласуем после получения материалов.</p>
+<a class="btn" href="#contact">Оставить заявку ↗</a>
+</div>
+</div>
+</section>
 
-      <section id="process">
-        <div class="section-head">
-          <div class="eyebrow">Простой процесс</div>
-          <h2>От ссылки до готового отчёта</h2>
-        </div>
-        <div class="steps">
-          <article class="step"><b>ШАГ 01</b><h3>Вы присылаете ссылку</h3><p>На карточку объекта или площадки с публичными отзывами. Согласуем, какие источники анализировать.</p></article>
-          <article class="step"><b>ШАГ 02</b><h3>Мы разбираем отзывы</h3><p>Группируем темы, проверяем повторяющиеся замечания и готовим рекомендации.</p></article>
-          <article class="step"><b>ШАГ 03</b><h3>Вы получаете PDF</h3><p>Передаём отчёт с выводами, черновиками ответов и приоритетными действиями.</p></article>
-        </div>
-      </section>
+<section id="example">
+<div class="section-head">
+<div class="eyebrow">Как выглядит результат</div>
+<h2>От отдельных отзывов к понятным выводам</h2>
+<p>Ниже условный пример того, как может выглядеть анализ. Это демонстрационные данные, а не реальный клиентский отчёт.</p>
+</div>
+<div class="sample-grid">
+<article class="sample reveal">
+<small>Что нравится гостям</small>
+<h3>Сильные стороны</h3>
+<p><strong>Чистота и расположение.</strong> В условных отзывах гости часто отмечают аккуратные номера, удобное расположение и доброжелательность персонала.</p>
+</article>
+<article class="sample reveal">
+<small>Что стоит проверить</small>
+<h3>Повторяющиеся замечания</h3>
+<p><strong>Комфорт и организация.</strong> В примере встречаются замечания о шумоизоляции и времени заселения.</p>
+</article>
+</div>
+</section>
 
-      <section id="faq">
-        <div class="section-head">
-          <div class="eyebrow">Частые вопросы</div>
-          <h2>Перед началом работы</h2>
-        </div>
-        <div class="faq">
-          <details><summary>Какие отзывы вы анализируете?</summary><p>Публичные отзывы, доступные по ссылкам, которые предоставляет заказчик. Возможность просмотра зависит от площадки и её правил.</p></details>
-          <details><summary>Вы гарантируете рост рейтинга или бронирований?</summary><p>Нет. Мы не обещаем конкретный рост рейтинга, продаж или бронирований. Результат услуги — аналитический отчёт и практические рекомендации.</p></details>
-          <details><summary>Вы публикуете ответы от имени гостиницы?</summary><p>Нет. Мы готовим черновики ответов, а владелец или управляющий проверяет и самостоятельно публикует их.</p></details>
-          <details><summary>Можно ли проверить сначала бесплатно?</summary><p>Да. Можно запросить небольшой демонстрационный разбор, чтобы оценить формат и полезность работы до заказа полного отчёта.</p></details>
-        </div>
-      </section>
+<section id="process">
+<div class="section-head">
+<div class="eyebrow">Простой процесс</div>
+<h2>Всего три шага</h2>
+<p>Не нужно разбираться в сложных таблицах или самостоятельно собирать отчёты.</p>
+</div>
+<div class="steps">
+<article class="step reveal">
+<b>ШАГ 01</b>
+<h3>Оставляете заявку</h3>
+<p>Указываете название гостиницы или гостевого дома и ссылку на отзывы.</p>
+</article>
+<article class="step reveal">
+<b>ШАГ 02</b>
+<h3>Мы изучаем отзывы</h3>
+<p>Проверяем доступные материалы и готовим структурированный разбор.</p>
+</article>
+<article class="step reveal">
+<b>ШАГ 03</b>
+<h3>Получаете результат</h3>
+<p>Передаём отчёт с выводами, вариантами ответов и рекомендациями.</p>
+</article>
+</div>
+</section><section id="faq">
+<div class="section-head">
+<div class="eyebrow">Частые вопросы</div>
+<h2>Перед началом работы</h2>
+</div>
+<div class="faq">
+<details>
+<summary>Какие отзывы вы анализируете?</summary>
+<p>Публичные отзывы, доступные по ссылкам, которые предоставляет заказчик. Возможность просмотра зависит от площадки.</p>
+</details>
+<details>
+<summary>Вы гарантируете рост рейтинга или бронирований?</summary>
+<p>Нет. Мы не обещаем конкретный рост рейтинга, продаж или бронирований. Результат услуги — аналитический отчёт и практические рекомендации.</p>
+</details>
+<details>
+<summary>Вы публикуете ответы от имени гостиницы?</summary>
+<p>Нет. Мы готовим черновики ответов, а владелец самостоятельно проверяет и публикует их.</p>
+</details>
+<details>
+<summary>Можно ли проверить сначала бесплатно?</summary>
+<p>Да. Можно запросить небольшой демонстрационный разбор, чтобы оценить формат работы.</p>
+</details>
+</div>
+</section>
 
-      <section id="contact">
-        <div class="cta">
-          <div class="eyebrow" style="justify-content:center">Начнём с малого</div>
-          <h2>Посмотрим, что гости говорят о вашем объекте</h2>
-          <p>Оставьте название объекта и ссылку на отзывы. Подготовим небольшой демонстрационный разбор, чтобы вы увидели формат работы.</p>
-          <form id="leadForm" style="max-width:560px;margin:0 auto;text-align:left">
-            <label for="place" style="display:block;font-size:12px;color:var(--muted);margin:0 0 7px">Название гостиницы или гостевого дома</label>
-            <input id="place" required placeholder="Например, Гостевой дом на Байкале" style="width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#132121;color:var(--text);font:inherit;margin-bottom:13px">
-            <label for="url" style="display:block;font-size:12px;color:var(--muted);margin:0 0 7px">Ссылка на отзывы</label>
-            <input id="url" type="url" required placeholder="https://..." style="width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#132121;color:var(--text);font:inherit;margin-bottom:17px">
-            <button class="btn btn-primary" type="submit" style="width:100%">Отправить запрос через Telegram ↗</button>
-            <div id="formNote" class="note" style="text-align:center">Откроется Telegram с подготовленным сообщением. Вы сами выберете чат для отправки.</div>
-          </form>
-        </div>
-      </section>
-    </div>
-  </main>
+<section id="contact">
+<div class="cta">
+<div class="eyebrow" style="justify-content:center">Начнём с малого</div>
+<h2>Посмотрим, что гости говорят о вашем объекте</h2>
+<p>Оставьте название объекта и ссылку на отзывы. Подготовим небольшой демонстрационный разбор.</p>
 
-  <footer class="wrap">
-    <div><strong style="color:var(--text)">ОТЗЫВЫ ПОД КОНТРОЛЕМ</strong><br>Разбор отзывов для объектов размещения</div>
-    <div class="disclaimer">Демонстрационные примеры на сайте содержат условные данные. Анализ не заменяет проверку фактов владельцем и не гарантирует изменение рейтинга или коммерческих результатов.</div>
-    <div>© <span id="year"></span></div>
-  </footer>
+<form id="leadForm">
+<label for="place">Название гостиницы или гостевого дома</label>
+<input id="place" required placeholder="Например, Гостевой дом на Байкале">
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('leadForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const place = document.getElementById('place').value.trim();
-      const url = document.getElementById('url').value.trim();
-      const message = `Здравствуйте! Хочу получить мини-разбор отзывов.\\nОбъект: ${place}\\nСсылка на отзывы: ${url}`;
-      const share = 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(message);
-      window.open(share, '_blank', 'noopener,noreferrer');
-    });
-  </script>
+<label for="url">Ссылка на отзывы</label>
+<input id="url" type="url" required placeholder="https://...">
+
+<button class="btn btn-primary" type="submit">Отправить заявку ↗</button>
+
+<div id="formNote" class="note" style="text-align:center">
+Заявка поступит нам через защищённое соединение.
+</div>
+</form>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer class="wrap">
+<div>
+<strong style="color:white">ОТЗЫВЫ ПОД КОНТРОЛЕМ</strong>
+<br>Разбор отзывов для объектов размещения
+</div>
+<div style="max-width:620px">
+Демонстрационные примеры на сайте содержат условные данные. Анализ не заменяет проверку фактов владельцем и не гарантирует коммерческих результатов.
+</div>
+<div>© <span id="year"></span></div>
+</footer>
+
+<script>
+document.getElementById('year').textContent =
+new Date().getFullYear();
+
+(function(){
+const items=document.querySelectorAll(
+'.card,.sample,.step,.offer,.cta,.section-head'
+);
+
+if(!('IntersectionObserver' in window) ||
+window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('is-visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:.12});
+
+items.forEach(el=>{
+el.classList.add('reveal');
+observer.observe(el);
+});
+})();
+
+const WORKER_URL =
+'https://steep-hill-64ea.borisovnaevgenia725.workers.dev';
+
+const leadForm=document.getElementById('leadForm');
+const formNote=document.getElementById('formNote');
+
+leadForm.addEventListener('submit',async function(e){
+e.preventDefault();
+
+const place=document.getElementById('place').value.trim();
+const url=document.getElementById('url').value.trim();
+const button=leadForm.querySelector('button');
+
+button.disabled=true;
+formNote.textContent='Отправляем заявку...';
+
+try{
+const response=await fetch(WORKER_URL,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({place,url})
+});
+
+const result=await response.json();
+
+if(!response.ok || !result.success){
+throw new Error(result.error || 'Ошибка отправки');
+}
+
+formNote.textContent='Заявка отправлена! Мы получили её в Telegram.';
+leadForm.reset();
+
+}catch(error){
+formNote.textContent=
+'Не получилось отправить заявку. Попробуйте позже или напишите нам в Telegram: @sadllips';
+}finally{
+button.disabled=false;
+}
+});
+</script>
 </body>
 </html>
