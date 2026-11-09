@@ -1,550 +1,2301 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#101311" />
-<meta name="description" content="Отзывы под контролем — аналитика отзывов, репутации и клиентского опыта для бизнеса." />
-<title>Отзывы под контролем — аналитика репутации</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f8f5">
+<meta name="description" content="Отзывы под контролем — аналитика отзывов, репутации и клиентского опыта для бизнеса.">
+<title>Отзывы под контролем — аналитика репутации бизнеса</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--bg:#101311;--panel:#171c19;--panel2:#1c231f;--line:rgba(226,239,229,.11);--text:#f1f5f1;--muted:#9ba79e;--green:#b7f36b;--green2:#8edc45;--white:#fff;--max:1180px;--radius:22px;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.muted{color:var(--muted)}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.eyebrow:before{content:'';width:22px;height:1px;background:var(--green)}.section{padding:105px 0}.section-head{max-width:680px;margin-bottom:42px}.section-head h2{font:800 clamp(32px,5vw,52px)/1.08 Manrope,sans-serif;letter-spacing:-.045em;margin:14px 0}.section-head p{color:var(--muted);font-size:16px;max-width:570px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:12px;border:1px solid transparent;background:var(--green);color:#10150d;font-weight:800;cursor:pointer;transition:.22s}.btn:hover{background:#caff8b;transform:translateY(-2px)}.btn.secondary{background:transparent;color:var(--text);border-color:var(--line)}.btn.secondary:hover{border-color:var(--green);color:var(--green)}.btn.small{padding:11px 15px;font-size:13px}.topline{height:3px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.8}.header{position:sticky;top:0;z-index:20;background:rgba(16,19,17,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font:800 16px Manrope,sans-serif;letter-spacing:-.03em}.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--green);display:grid;place-items:center;color:#10150d;font-weight:900;font-size:17px}.brand span small{display:block;font:600 9px 'DM Sans';color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:1px}.navlinks{display:flex;align-items:center;gap:27px;color:#c2cbc4;font-size:13px}.navlinks a:hover{color:var(--green)}.menu-btn{display:none;background:none;border:0;color:var(--text);font-size:25px}.hero{padding:88px 0 78px;position:relative;overflow:hidden}.hero:after{content:'';position:absolute;width:620px;height:620px;right:-190px;top:-220px;background:radial-gradient(circle,rgba(183,243,107,.12),transparent 68%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:1}.hero h1{font:800 clamp(42px,6vw,72px)/1.02 Manrope,sans-serif;letter-spacing:-.06em;margin:20px 0}.hero h1 em{font-style:normal;color:var(--green)}.hero-copy{font-size:17px;color:#aab5ad;max-width:560px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 26px}.hero-note{display:flex;gap:18px;flex-wrap:wrap;color:#aeb8b0;font-size:12px}.hero-note span{display:flex;align-items:center;gap:7px}.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.dash{background:linear-gradient(145deg,#1b231e,#141916);border:1px solid rgba(183,243,107,.2);border-radius:24px;padding:22px;box-shadow:0 30px 90px rgba(0,0,0,.28);transform:perspective(1000px) rotateY(-4deg) rotateX(2deg)}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.dash-title{font:700 13px Manrope}.live{font-size:10px;color:var(--green);border:1px solid rgba(183,243,107,.25);padding:5px 8px;border-radius:30px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{background:rgba(255,255,255,.035);border:1px solid var(--line);padding:13px;border-radius:13px}.metric small{display:block;color:var(--muted);font-size:10px}.metric strong{font:800 23px Manrope;display:block;margin:5px 0 2px}.metric i{font-style:normal;color:var(--green);font-size:10px}.chartbox{margin-top:13px;padding:16px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px}.chart-head{display:flex;justify-content:space-between;font-size:11px;margin-bottom:10px}.chart-head span:last-child{color:var(--muted)}.chart{width:100%;height:auto;display:block}.chart-labels{display:flex;justify-content:space-between;color:#7f8c83;font-size:9px;margin-top:2px}.dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.mini-box{padding:13px;border:1px solid var(--line);border-radius:13px}.mini-box small{color:var(--muted);font-size:10px}.bars{display:flex;align-items:end;gap:6px;height:48px;margin-top:8px}.bars span{flex:1;border-radius:4px 4px 1px 1px;background:linear-gradient(180deg,var(--green),rgba(183,243,107,.18));animation:rise 1s ease both}.bars span:nth-child(1){height:42%}.bars span:nth-child(2){height:60%}.bars span:nth-child(3){height:48%}.bars span:nth-child(4){height:76%}.bars span:nth-child(5){height:65%}.bars span:nth-child(6){height:92%}@keyframes rise{from{transform:scaleY(.2);transform-origin:bottom}to{transform:scaleY(1)}}
-.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}.trust-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#aab5ad;font-size:12px}.trust-row b{color:#e5ece6;font-weight:600}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{padding:25px;background:var(--panel);border:1px solid var(--line);border-radius:18px;transition:.25s}.feature:hover{transform:translateY(-5px);border-color:rgba(183,243,107,.35)}.feature-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:rgba(183,243,107,.1);color:var(--green);font-size:19px;margin-bottom:20px}.feature h3{font:700 17px Manrope;margin:0 0 8px}.feature p{margin:0;color:var(--muted);font-size:13px}.analytics{background:#141916;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:19px;padding:22px}.panel h3{font:700 15px Manrope;margin:0}.panel-sub{font-size:11px;color:var(--muted);margin:4px 0 15px}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin-top:8px}.legend span:before{content:'';display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--green);margin-right:6px}.legend span:nth-child(2):before{background:#6f8f79}.legend span:nth-child(3):before{background:#d28d68}.donut-wrap{display:flex;align-items:center;gap:22px;min-height:180px}.donut{width:142px;height:142px;border-radius:50%;background:conic-gradient(var(--green) 0 58%,#6f8f79 58% 82%,#d28d68 82% 100%);position:relative;flex:none}.donut:after{content:'100%';position:absolute;inset:17px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font:800 21px Manrope}.donut-legend{display:grid;gap:12px;font-size:12px;color:#d5ddd6}.donut-legend small{display:block;color:var(--muted);font-size:10px}.legend-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px}.bars-chart{display:grid;gap:12px;margin-top:18px}.bar-row{display:grid;grid-template-columns:95px 1fr 30px;gap:10px;align-items:center;font-size:11px;color:#c2cbc4}.bar-track{height:7px;background:#29312b;border-radius:20px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;background:var(--green)}.demo-disclaimer{font-size:10px;color:#7f8b82;margin-top:14px}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;align-items:stretch}.price-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:19px;padding:23px 19px;display:flex;flex-direction:column;min-height:420px;transition:.25s}.price-card:hover{transform:translateY(-5px);border-color:rgba(183,243,107,.3)}.price-card.featured{background:linear-gradient(160deg,#202b20,#171c19 70%);border-color:rgba(183,243,107,.55);box-shadow:0 15px 50px rgba(0,0,0,.18)}.popular{position:absolute;right:14px;top:14px;background:var(--green);color:#10150d;padding:5px 8px;border-radius:30px;font-size:9px;font-weight:800}.plan{font-size:11px;letter-spacing:.13em;color:var(--green);font-weight:800}.price{font:800 32px Manrope;letter-spacing:-.05em;margin:12px 0 2px}.price-card>p{color:var(--muted);font-size:11px;min-height:36px;margin:0 0 18px}.price-card ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:11px;font-size:12px;color:#d0d8d1}.price-card li:before{content:'✓';color:var(--green);font-weight:900;margin-right:8px}.price-card .btn{margin-top:auto;width:100%;font-size:12px;padding:12px 9px}.price-foot{font-size:10px;color:#7e8b81;margin-top:18px}.addons{background:#141916;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.addons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.addon{display:flex;gap:14px;align-items:flex-start;padding:19px;background:var(--panel);border:1px solid var(--line);border-radius:15px;cursor:pointer;transition:.2s}.addon:hover{border-color:rgba(183,243,107,.4)}.addon input{accent-color:var(--green);width:17px;height:17px;margin-top:4px;flex:none}.addon-body{flex:1}.addon-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.addon h3{font:700 14px Manrope;margin:0}.addon-price{font:700 13px Manrope;color:var(--green);white-space:nowrap}.addon p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.5}.calc{margin-top:20px;background:linear-gradient(110deg,#202b20,#171c19);border:1px solid rgba(183,243,107,.3);border-radius:18px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.calc small{color:var(--muted);font-size:10px;letter-spacing:.08em}.calc select{margin-top:8px;background:#101511;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px 12px;min-width:220px}.calc-right{text-align:right}.calc-total{font:800 30px Manrope;color:var(--green);margin:3px 0 10px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.step{padding:21px;border-top:1px solid rgba(183,243,107,.45);background:linear-gradient(180deg,rgba(183,243,107,.045),transparent);border-radius:0 0 14px 14px}.step-num{font-size:10px;letter-spacing:.14em;color:var(--green);font-weight:800}.step h3{font:700 15px Manrope;margin:17px 0 7px}.step p{color:var(--muted);font-size:12px;margin:0}.faq-list{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;display:flex;justify-content:space-between;gap:15px;text-align:left;background:none;border:0;color:var(--text);padding:20px 0;font:700 15px Manrope;cursor:pointer}.faq-q span{color:var(--green);font-size:20px}.faq-a{display:none;color:var(--muted);font-size:13px;max-width:760px;padding:0 30px 20px 0}.faq-item.open .faq-a{display:block}.contact{display:grid;grid-template-columns:1fr .9fr;gap:50px;padding:38px;background:linear-gradient(140deg,#202a21,#171c19);border:1px solid rgba(183,243,107,.22);border-radius:24px}.contact h2{font:800 clamp(30px,4vw,46px)/1.08 Manrope;letter-spacing:-.05em;margin:15px 0}.contact p{color:var(--muted);max-width:440px;font-size:14px}.contact-form{display:grid;gap:10px}.field{width:100%;padding:14px 15px;background:#111612;border:1px solid var(--line);border-radius:10px;color:var(--text);outline:none}.field:focus{border-color:var(--green)}.field::placeholder{color:#78847b}.contact-form textarea{min-height:95px;resize:vertical}.form-note{font-size:10px;color:#829087;line-height:1.5}.form-status{font-size:12px;color:var(--green);min-height:18px}.footer{border-top:1px solid var(--line);padding:28px 0}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer small{color:var(--muted);font-size:10px}.footer-links{display:flex;gap:18px;font-size:11px;color:#b7c1b9}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
-@media(max-width:980px){.pricing-grid{grid-template-columns:repeat(2,1fr)}.hero-grid{gap:28px}.hero h1{font-size:56px}}
-@media(max-width:700px){.wrap{width:min(var(--max),calc(100% - 28px))}.section{padding:72px 0}.nav{height:66px}.menu-btn{display:block}.navlinks{display:none;position:absolute;top:66px;left:0;right:0;padding:18px 22px;background:#141916;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:17px}.navlinks.show{display:flex}.nav .btn{display:none}.hero{padding:62px 0 55px}.hero-grid{grid-template-columns:1fr;gap:34px}.hero h1{font-size:clamp(42px,12vw,58px)}.hero-copy{font-size:15px}.dash{transform:none;padding:15px}.metric{padding:10px}.metric strong{font-size:19px}.feature-grid,.analytics-grid,.addons-grid{grid-template-columns:1fr}.pricing-grid{grid-template-columns:1fr}.price-card{min-height:0;padding:24px}.steps{grid-template-columns:1fr 1fr}.calc{align-items:flex-start;flex-direction:column}.calc-right{text-align:left}.contact{grid-template-columns:1fr;padding:23px;gap:25px}.donut-wrap{gap:15px}.donut{width:120px;height:120px}.footer-row{align-items:flex-start;flex-direction:column}}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </style>
-  </head>
+:root {
+  --bg: #f7f8f5;
+  --white: #ffffff;
+  --black: #171a18;
+  --text: #333a35;
+  --muted: #858d86;
+  --line: #e8ebe6;
+  --lime: #c5f36b;
+  --green: #527c38;
+  --soft: #eff4e9;
+  --dark: #19201b;
+  --max: 1180px;
+  --radius: 24px;
+  --shadow: 0 20px 70px rgba(28, 39, 29, .07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--black);
+}
+
+.wrap {
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 112px 0;
+  position: relative;
+}
+
+.section-alt {
+  background: #f0f2ed;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--lime);
+  border-radius: 50%;
+}
+
+.section-head {
+  max-width: 650px;
+  margin-bottom: 52px;
+}
+
+.section-head h2 {
+  margin-top: 18px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -2.6px;
+  font-weight: 800;
+}
+
+.section-head p {
+  margin-top: 18px;
+  max-width: 530px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.highlight {
+  color: var(--green);
+}
+
+.btn {
+  min-height: 54px;
+  padding: 0 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--lime);
+  color: #1b2416;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(153, 198, 76, .25);
+  background: #d1fa83;
+}
+
+.btn-dark {
+  background: var(--dark);
+  color: white;
+}
+
+.btn-dark:hover {
+  background: #2b382e;
+  box-shadow: 0 12px 30px rgba(25, 32, 27, .18);
+}
+
+.btn-arrow {
+  font-size: 18px;
+  transition: transform .3s ease;
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(247, 248, 245, .88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(232, 235, 230, .8);
+}
+
+.header-inner {
+  min-height: 82px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.7px;
+  white-space: nowrap;
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--lime);
+  border-radius: 11px;
+  font-size: 17px;
+  transform: rotate(-5deg);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 31px;
+}
+
+.nav a {
+  color: #646d65;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+
+.nav a:hover {
+  color: var(--green);
+}
+
+.header-action {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 12px;
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  font-size: 22px;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  padding: 92px 0 76px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  right: -220px;
+  top: -220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 243, 107, .2), transparent 68%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border: 1px solid #e4eadb;
+  border-radius: 100px;
+  background: rgba(255,255,255,.7);
+  color: #62735b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hero-label span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8ac34c;
+  box-shadow: 0 0 0 4px rgba(138,195,76,.14);
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin-top: 27px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(43px, 6vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -4.5px;
+  font-weight: 800;
+}
+
+.hero h1 em {
+  color: var(--green);
+  font-style: normal;
+}
+
+.hero-description {
+  max-width: 490px;
+  margin-top: 25px;
+  color: #788078;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #899188;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.hero-note span {
+  color: var(--green);
+  font-size: 16px;
+}
+
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  perspective: 1000px;
+}
+
+.dashboard {
+  position: relative;
+  padding: 25px;
+  border: 1px solid rgba(225, 230, 221, .9);
+  border-radius: 27px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 35px 90px rgba(39, 54, 37, .12);
+  transform: rotateY(-7deg) rotateX(2deg);
+  animation: dashboardFloat 7s ease-in-out infinite;
+}
+
+@keyframes dashboardFloat {
+  0%, 100% { transform: rotateY(-7deg) rotateX(2deg) translateY(0); }
+  50% { transform: rotateY(-5deg) rotateX(1deg) translateY(-12px); }
+}
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dashboard-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.dashboard-subtitle {
+  margin-top: 5px;
+  color: #a0a79f;
+  font-size: 10px;
+}
+
+.dashboard-period {
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: #f4f6f1;
+  color: #727b70;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 19px;
+}
+
+.stat-card {
+  padding: 17px;
+  border: 1px solid #edf0e9;
+  border-radius: 15px;
+  background: #fbfcfa;
+}
+
+.stat-label {
+  color: #8c968b;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.stat-value {
+  margin-top: 9px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.stat-change {
+  margin-top: 5px;
+  color: #69954a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.chart-card {
+  margin-top: 15px;
+  padding: 18px;
+  border: 1px solid #edf0e9;
+  border-radius: 15px;
+}
+
+.chart-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-heading strong {
+  font-size: 11px;
+}
+
+.chart-heading span {
+  color: #8e988c;
+  font-size: 9px;
+}
+
+.chart {
+  height: 110px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.chart-bar {
+  flex: 1;
+  min-width: 0;
+  height: var(--height);
+  border-radius: 6px 6px 2px 2px;
+  background: #dce9d0;
+  transform-origin: bottom;
+  animation: barGrow 1.3s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: var(--delay);
+}
+
+.chart-bar:nth-child(4),
+.chart-bar:nth-child(7) {
+  background: var(--lime);
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(.05); }
+  to { transform: scaleY(1); }
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  color: #a0a79f;
+  font-size: 9px;
+}
+
+.floating-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 17px;
+  border: 1px solid #e9eee4;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 15px 45px rgba(38, 50, 34, .1);
+  animation: floatSmall 5s ease-in-out infinite;
+}
+
+.floating-card.one {
+  left: -42px;
+  bottom: 52px;
+}
+
+.floating-card.two {
+  right: -24px;
+  top: 45px;
+  animation-delay: -2s;
+}
+
+@keyframes floatSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.floating-icon {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--soft);
+  color: var(--green);
+  font-size: 16px;
+}
+
+.floating-text strong {
+  display: block;
+  font-size: 11px;
+}
+
+.floating-text small {
+  display: block;
+  margin-top: 4px;
+  color: #929a91;
+  font-size: 9px;
+}
+
+/* TRUST LINE */
+
+.trust-line {
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.trust-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.trust-caption {
+  color: #929b91;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  color: #657064;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* PROBLEMS */
+
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.problem-card {
+  min-height: 245px;
+  padding: 29px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-8px);
+  border-color: #d8e6c8;
+  box-shadow: var(--shadow);
+}
+
+.problem-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #f0f5e9;
+  color: var(--green);
+  font-size: 21px;
+}
+
+.problem-card h3 {
+  margin-top: 25px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+.problem-card p {
+  margin-top: 12px;
+  color: #838c82;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+/* ANALYTICS */
+
+.analytics-layout {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.analytics-copy h2 {
+  margin-top: 18px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 4.5vw, 50px);
+  line-height: 1.1;
+  letter-spacing: -2.5px;
+}
+
+.analytics-copy p {
+  margin-top: 19px;
+  color: #828b82;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.feature-list {
+  display: grid;
+  gap: 17px;
+  margin-top: 30px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.feature-check {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lime);
+  color: #314525;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.feature-item strong {
+  display: block;
+  font-size: 13px;
+}
+
+.feature-item small {
+  display: block;
+  margin-top: 5px;
+  color: #899188;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.analytics-panel {
+  padding: 27px;
+  border: 1px solid #e4e9df;
+  border-radius: 25px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.panel-header h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.demo-tag {
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #f0f5e9;
+  color: #66854f;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.panel-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.panel-number {
+  padding: 15px;
+  border-radius: 14px;
+  background: #f7f9f5;
+}
+
+.panel-number span {
+  color: #899288;
+  font-size: 10px;
+}
+
+.panel-number strong {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+
+.sentiment-title {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sentiment-title span:last-child {
+  color: #9aa197;
+  font-weight: 500;
+}
+
+.sentiment-bar {
+  display: flex;
+  height: 12px;
+  gap: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.sentiment-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.sentiment-good { width: 68%; background: #a9d779; }
+.sentiment-neutral { width: 22%; background: #e8d98b; }
+.sentiment-bad { width: 10%; background: #e7a29a; }
+
+.sentiment-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  margin-top: 12px;
+}
+
+.sentiment-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #899188;
+  font-size: 9px;
+}
+
+.legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.topic-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 27px;
+}
+
+.topic-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 35px;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+}
+
+.topic-row > span:first-child {
+  color: #687267;
+}
+
+.topic-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f0f2ed;
+}
+
+.topic-fill {
+  height: 100%;
+  width: var(--width);
+  border-radius: 20px;
+  background: #b6d994;
+}
+
+.topic-row strong {
+  text-align: right;
+  color: #687267;
+}
+
+/* PROCESS */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.process-card {
+  position: relative;
+  padding: 27px 23px;
+  border: 1px solid #e5e9e1;
+  border-radius: 20px;
+  background: rgba(255,255,255,.8);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow);
+}
+
+.process-number {
+  color: #a2b58e;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.process-card h3 {
+  margin-top: 25px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.process-card p {
+  margin-top: 11px;
+  color: #899188;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+/* PRICING */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: 18px;
+}
+
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 31px;
+  border: 1px solid var(--line);
+  border-radius: 23px;
+  background: white;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow);
+}
+
+.price-card.featured {
+  border: 2px solid #b8df80;
+  box-shadow: 0 20px 55px rgba(130, 170, 83, .12);
+}
+
+.price-popular {
+  position: absolute;
+  top: -13px;
+  right: 23px;
+  padding: 7px 12px;
+  border-radius: 30px;
+  background: var(--lime);
+  color: #34472a;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.price-name {
+  color: #788276;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-value {
+  margin-top: 17px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 39px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.price-description {
+  min-height: 48px;
+  margin-top: 9px;
+  color: #899188;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.price-divider {
+  height: 1px;
+  margin: 23px 0;
+  background: var(--line);
+}
+
+.price-features {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 28px;
+  list-style: none;
+}
+
+.price-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #657064;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.price-features li::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: 900;
+}
+
+.price-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.price-footnote {
+  margin-top: 27px;
+  color: #929a91;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ADDONS */
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.addon-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: white;
+  transition: border-color .25s ease, transform .25s ease;
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
+  border-color: #c7dda9;
+}
+
+.addon-card h3 {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.addon-card p {
+  margin-top: 7px;
+  color: #8b9489;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.addon-price {
+  flex-shrink: 0;
+  color: var(--green);
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* FAQ */
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 70px;
+}
+
+.faq-intro h2 {
+  margin-top: 17px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 4vw, 47px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.faq-intro p {
+  margin-top: 17px;
+  color: #899188;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.faq-plus {
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  color: var(--green);
+  font-size: 19px;
+  transition: transform .3s ease, background .3s ease;
+}
+
+.faq-item.active .faq-plus {
+  transform: rotate(45deg);
+  background: var(--lime);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+
+.faq-answer p {
+  max-width: 600px;
+  padding: 0 35px 22px 0;
+  color: #899188;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* FINAL CTA */
+
+.final-cta {
+  padding: 75px 0;
+  background: var(--dark);
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.final-cta::before {
+  content: "";
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  right: -100px;
+  top: -300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197,243,107,.19), transparent 70%);
+}
+
+.cta-inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.cta-inner h2 {
+  max-width: 650px;
+  margin-top: 15px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 5vw, 55px);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.cta-inner p {
+  max-width: 500px;
+  margin-top: 17px;
+  color: #a8b1a8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.cta-inner .btn {
+  flex-shrink: 0;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 35px 0;
+  background: #141a16;
+  color: white;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.footer .logo {
+  color: white;
+}
+
+.footer-copy {
+  color: #8b958b;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.footer-bottom {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.09);
+  color: #69736a;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* REVEAL ANIMATIONS */
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+body.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1);
+}
+
+body.js-ready .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: .1s !important; }
+.reveal-delay-2 { transition-delay: .2s !important; }
+.reveal-delay-3 { transition-delay: .3s !important; }
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .hero-grid {
+    gap: 35px;
+  }
+
+  .hero h1 {
+    font-size: 58px;
+  }
+
+  .floating-card.one {
+    left: -15px;
+  }
+
+  .floating-card.two {
+    right: -10px;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analytics-layout {
+    gap: 35px;
+  }
+
+  .faq-layout {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    width: min(100% - 36px, var(--max));
+  }
+
+  .section {
+    padding: 78px 0;
+  }
+
+  .header-inner {
+    min-height: 70px;
+  }
+
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 20px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 14px 5px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-action {
+    display: none;
+  }
+
+  .hero {
+    padding: 65px 0 55px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .hero h1 {
+    max-width: 590px;
+    font-size: clamp(43px, 11vw, 61px);
+    letter-spacing: -3px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    width: min(100%, 540px);
+    margin: 0 auto;
+  }
+
+  .dashboard {
+    transform: none;
+    animation: none;
+  }
+
+  .floating-card.one {
+    left: -8px;
+    bottom: 25px;
+  }
+
+  .floating-card.two {
+    right: -5px;
+    top: -22px;
+  }
+
+  .trust-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .trust-items {
+    gap: 15px 22px;
+  }
+
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-card {
+    min-height: auto;
+  }
+
+  .analytics-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-panel {
+    padding: 19px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .price-card {
+    padding: 27px;
+  }
+
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-copy {
+    text-align: left;
+  }
+}
+
+@media (max-width: 440px) {
+  .wrap {
+    width: calc(100% - 30px);
+  }
+
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .dashboard {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .floating-card {
+    padding: 10px 12px;
+  }
+
+  .floating-text strong {
+    font-size: 10px;
+  }
+
+  .floating-text small {
+    font-size: 8px;
+  }
+
+  .panel-summary {
+    gap: 7px;
+  }
+
+  .panel-number {
+    padding: 10px;
+  }
+
+  .panel-number strong {
+    font-size: 20px;
+  }
+
+  .topic-row {
+    grid-template-columns: 85px 1fr 28px;
+    gap: 8px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head h2 {
+    letter-spacing: -1.8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  body.js-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
 <body>
-<div class="topline"></div>
-<header class="header">
-  <div class="wrap nav">
-    <a class="brand" href="#">
-      <span class="brand-mark">О</span>
-      <span>ОТЗЫВЫ ПОД КОНТРОЛЕМ<small>REPUTATION ANALYTICS</small></span>
+  <header class="header">
+  <div class="wrap header-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark">↗</span>
+      <span>Отзывы под контролем</span>
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
-    <nav class="navlinks" id="navLinks">
-      <a href="#services">Возможности</a>
+
+    <nav class="nav" id="mainNav">
+      <a href="#problems">Проблемы</a>
       <a href="#analytics">Аналитика</a>
-      <a href="#pricing">Тарифы</a>
-      <a href="#addons">Дополнительные услуги</a>
-      <a href="#contact">Контакты</a>
+      <a href="#process">Как работаем</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn small" href="#contact">Оставить заявку ↗</a>
+
+    <a href="#pricing" class="btn header-action">
+      Наши услуги <span class="btn-arrow">↗</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+      ☰
+    </button>
   </div>
 </header>
 
 <main>
-<section class="hero">
+
+<section class="hero" id="home">
   <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">АНАЛИТИКА РЕПУТАЦИИ ДЛЯ БИЗНЕСА</div>
-      <h1>Ваш бизнес.<br>Взгляд <em>клиентов.</em></h1>
-      <p class="hero-copy">Помогаем увидеть, что действительно думают клиенты о вашем бизнесе. Анализируем отзывы, находим повторяющиеся проблемы и превращаем обратную связь в понятные решения.</p>
+
+    <div class="hero-copy">
+      <div class="hero-label">
+        <span></span>
+        АНАЛИТИКА РЕПУТАЦИИ БИЗНЕСА
+      </div>
+
+      <h1>
+        Ваши отзывы.<br>
+        Ваша репутация.<br>
+        <em>Под контролем.</em>
+      </h1>
+
+      <p class="hero-description">
+        Помогаем бизнесу разобраться в отзывах клиентов:
+        находим повторяющиеся проблемы, показываем сильные стороны
+        и превращаем обратную связь в понятные решения.
+      </p>
+
       <div class="hero-actions">
-        <a class="btn" href="#pricing">Выбрать тариф ↗</a>
-        <a class="btn secondary" href="#analytics">Посмотреть аналитику</a>
-      </div>
-      <div class="hero-note">
-        <span><i class="dot"></i> Понятные отчёты</span>
-        <span><i class="dot"></i> Без сложных таблиц</span>
-        <span><i class="dot"></i> Для малого бизнеса</span>
-      </div>
-    </div>
-    <div class="dash">
-      <div class="dash-top">
-        <div class="dash-title">Обзор репутации</div>
-        <div class="live">● DEMO DATA</div>
-      </div>
-      <div class="metrics">
-        <div class="metric"><small>Средний рейтинг</small><strong>4.7</strong><i>из 5.0</i></div>
-        <div class="metric"><small>Всего отзывов</small><strong>248</strong><i>пример данных</i></div>
-        <div class="metric"><small>Позитивные</small><strong>82%</strong><i>пример данных</i></div>
-      </div>
-      <div class="chartbox">
-        <div class="chart-head"><span>Динамика рейтинга</span><span>6 месяцев · DEMO</span></div>
-        <svg class="chart" viewBox="0 0 500 150" role="img" aria-label="Демонстрационный график рейтинга">
-          <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b7f36b" stop-opacity=".3"/><stop offset="1" stop-color="#b7f36b" stop-opacity="0"/></linearGradient></defs>
-          <g stroke="#344037" stroke-width="1"><path d="M0 25H500 M0 65H500 M0 105H500 M0 145H500"/></g>
-          <path d="M0 112 C45 108 60 90 100 96 S165 72 200 82 S270 55 300 65 S370 35 400 45 S465 20 500 25 L500 150 L0 150Z" fill="url(#area)"/>
-          <path d="M0 112 C45 108 60 90 100 96 S165 72 200 82 S270 55 300 65 S370 35 400 45 S465 20 500 25" fill="none" stroke="#b7f36b" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="500" cy="25" r="5" fill="#b7f36b"/>
-        </svg>
-        <div class="chart-labels"><span>Янв</span><span>Фев</span><span>Мар</span><span>Апр</span><span>Май</span><span>Июн</span></div>
-      </div>
-      <div class="dash-bottom">
-        <div class="mini-box"><small>Упоминания проблем</small><div class="bars"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
-        <div class="mini-box"><small>Положительная оценка</small><strong style="font:800 25px Manrope;color:var(--green);display:block;margin-top:10px">82%</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
+        <a href="#pricing" class="btn">
+          Посмотреть услуги <span class="btn-arrow">↗</span>
+        </a>
 
-<div class="trust">
-  <div class="wrap trust-row">
-    <span><b>АНАЛИЗ</b> — изучаем обратную связь</span>
-    <span><b>СТРУКТУРА</b> — находим закономерности</span>
-    <span><b>РЕШЕНИЯ</b> — предлагаем следующие шаги</span>
-  </div>
-</div>
+        <div class="hero-note">
+          <span>✳</span>
+          Анализируем данные,<br>а не обещаем чудеса
+        </div>
+      </div>
+    </div>
 
-<section class="section" id="services">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">ВОЗМОЖНОСТИ</div>
-      <h2>Не просто цифры.<br>Понимание ситуации.</h2>
-      <p>Собираем важную информацию из отзывов и представляем её в удобном для владельца бизнеса виде.</p>
-    </div>
-    <div class="feature-grid">
-      <article class="feature reveal"><div class="feature-icon">⌕</div><h3>Анализ отзывов</h3><p>Изучение доступных отзывов и выделение важных замечаний клиентов.</p></article>
-      <article class="feature reveal"><div class="feature-icon">▥</div><h3>Понятная статистика</h3><p>Графики, категории, частота упоминаний и общая картина обратной связи.</p></article>
-      <article class="feature reveal"><div class="feature-icon">↗</div><h3>Практические решения</h3><p>Рекомендации, которые помогают определить, на что обратить внимание в первую очередь.</p></article>
-    </div>
-  </div>
-</section>
+    <div class="hero-visual">
+      <div class="dashboard">
 
-<section class="section analytics" id="analytics">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">АНАЛИТИЧЕСКАЯ ПАНЕЛЬ</div>
-      <h2>Вся картина<br>перед глазами.</h2>
-      <p>Пример того, как может выглядеть аналитический отчёт по отзывам.</p>
-    </div>
-    <div class="analytics-grid">
-      <div class="panel reveal">
-        <h3>Структура отзывов</h3>
-        <div class="panel-sub">Условное распределение по тональности</div>
-        <div class="donut-wrap">
-          <div class="donut"></div>
-          <div class="donut-legend">
-            <div><i class="legend-dot" style="background:var(--green)"></i>Положительные<small>58% · пример</small></div>
-            <div><i class="legend-dot" style="background:#6f8f79"></i>Нейтральные<small>24% · пример</small></div>
-            <div><i class="legend-dot" style="background:#d28d68"></i>Отрицательные<small>18% · пример</small></div>
+        <div class="dashboard-top">
+          <div>
+            <div class="dashboard-title">Обзор репутации</div>
+            <div class="dashboard-subtitle">Демонстрационный пример аналитики</div>
+          </div>
+          <div class="dashboard-period">30 дней⌄</div>
+        </div>
+
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-label">Всего отзывов</div>
+            <div class="stat-value" data-count="248">248</div>
+            <div class="stat-change">Объём выборки</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Положительные</div>
+            <div class="stat-value" data-count="86">86%</div>
+            <div class="stat-change">Доля отзывов</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Нейтральные</div>
+            <div class="stat-value" data-count="9">9%</div>
+            <div class="stat-change">Доля отзывов</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Отрицательные</div>
+            <div class="stat-value" data-count="5">5%</div>
+            <div class="stat-change">Доля отзывов</div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-heading">
+            <strong>Активность отзывов</strong>
+            <span>Условные данные</span>
+          </div>
+
+          <div class="chart">
+            <div class="chart-bar" style="--height:35%;--delay:.05s"></div>
+            <div class="chart-bar" style="--height:48%;--delay:.1s"></div>
+            <div class="chart-bar" style="--height:40%;--delay:.15s"></div>
+            <div class="chart-bar" style="--height:73%;--delay:.2s"></div>
+            <div class="chart-bar" style="--height:58%;--delay:.25s"></div>
+            <div class="chart-bar" style="--height:82%;--delay:.3s"></div>
+            <div class="chart-bar" style="--height:95%;--delay:.35s"></div>
+            <div class="chart-bar" style="--height:68%;--delay:.4s"></div>
+          </div>
+
+          <div class="chart-labels">
+            <span>01</span>
+            <span>05</span>
+            <span>10</span>
+            <span>15</span>
+            <span>20</span>
+            <span>30</span>
           </div>
         </div>
       </div>
-      <div class="panel reveal">
-        <h3>Частые темы</h3>
-        <div class="panel-sub">Условное количество упоминаний</div>
-        <div class="bars-chart">
-          <div class="bar-row"><span>Сервис</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><b>32</b></div>
-          <div class="bar-row"><span>Персонал</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><b>21</b></div>
-          <div class="bar-row"><span>Цена</span><div class="bar-track"><div class="bar-fill" style="width:44%"></div></div><b>15</b></div>
-          <div class="bar-row"><span>Качество</span><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><b>12</b></div>
+
+      <div class="floating-card one">
+        <div class="floating-icon">✓</div>
+        <div class="floating-text">
+          <strong>Сильные стороны</strong>
+          <small>Выделены автоматически</small>
+        </div>
+      </div>
+
+      <div class="floating-card two">
+        <div class="floating-icon">↗</div>
+        <div class="floating-text">
+          <strong>Новые выводы</strong>
+          <small>На основе отзывов</small>
         </div>
       </div>
     </div>
-    <div class="demo-disclaimer">* Все цифры и графики выше — демонстрационные данные, не реальные показатели клиентов.</div>
+
   </div>
 </section>
-<section class="section" id="pricing">
+
+<div class="trust-line">
+  <div class="wrap trust-inner">
+    <div class="trust-caption">ЧТО ПОМОГАЕМ ПОНЯТЬ</div>
+
+    <div class="trust-items">
+      <span>Клиентский опыт</span>
+      <span>Репутация</span>
+      <span>Повторяющиеся проблемы</span>
+      <span>Точки роста</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="problems">
   <div class="wrap">
+
     <div class="section-head reveal">
-      <div class="eyebrow">СТОИМОСТЬ</div>
-      <h2>Выберите подходящий <span class="accent">формат</span></h2>
-      <p>Четыре варианта анализа — от быстрой проверки до подробной работы с репутацией.</p>
+      <span class="eyebrow">ЗНАКОМЫЕ СИТУАЦИИ</span>
+
+      <h2>
+        Отзывы есть.<br>
+        Но что они <span class="highlight">говорят бизнесу?</span>
+      </h2>
+
+      <p>
+        Отдельные комментарии сложно оценивать по одному.
+        Важно увидеть общую картину и понять, что действительно
+        влияет на впечатление клиентов.
+      </p>
+    </div>
+
+    <div class="problems-grid">
+
+      <article class="problem-card reveal">
+        <div class="problem-icon">⌕</div>
+        <h3>Отзывы разбросаны</h3>
+        <p>
+          Информация находится на разных площадках.
+          Сложно быстро собрать всё в одну понятную картину.
+        </p>
+      </article>
+
+      <article class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">◉</div>
+        <h3>Проблемы повторяются</h3>
+        <p>
+          Клиенты могут регулярно жаловаться на одно и то же,
+          но без анализа повторяющиеся темы легко пропустить.
+        </p>
+      </article>
+
+      <article class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">⌁</div>
+        <h3>Неясно, что улучшать</h3>
+        <p>
+          Негативные комментарии сами по себе не дают плана действий.
+          Нужны выводы и конкретные рекомендации.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+<section class="section section-alt" id="analytics">
+  <div class="wrap analytics-layout">
+
+    <div class="analytics-copy reveal">
+      <span class="eyebrow">АНАЛИТИКА БЕЗ ЛИШНЕГО ШУМА</span>
+
+      <h2>
+        Не просто читаем отзывы.
+        <span class="highlight">Находим закономерности.</span>
+      </h2>
+
+      <p>
+        Собираем доступную обратную связь, группируем её по темам
+        и помогаем увидеть, что клиенты ценят, а что стоит улучшить.
+      </p>
+
+      <div class="feature-list">
+
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div>
+            <strong>Анализ тональности</strong>
+            <small>Положительные, нейтральные и отрицательные оценки.</small>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div>
+            <strong>Поиск повторяющихся тем</strong>
+            <small>Выявляем частые жалобы, пожелания и преимущества.</small>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div>
+            <strong>Понятные рекомендации</strong>
+            <small>Формируем список направлений для улучшения сервиса.</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="analytics-panel reveal reveal-delay-1">
+
+      <div class="panel-header">
+        <h3>Структура обратной связи</h3>
+        <span class="demo-tag">Демо-данные</span>
+      </div>
+
+      <div class="panel-summary">
+
+        <div class="panel-number">
+          <span>Всего отзывов</span>
+          <strong>248</strong>
+        </div>
+
+        <div class="panel-number">
+          <span>Позитивных</span>
+          <strong>86%</strong>
+        </div>
+
+        <div class="panel-number">
+          <span>Тем найдено</span>
+          <strong>12</strong>
+        </div>
+
+      </div>
+
+      <div class="sentiment-title">
+        <span>Тональность отзывов</span>
+        <span>Условный пример</span>
+      </div>
+
+      <div class="sentiment-bar">
+        <span class="sentiment-good"></span>
+        <span class="sentiment-neutral"></span>
+        <span class="sentiment-bad"></span>
+      </div>
+
+      <div class="sentiment-legend">
+        <span><i class="legend-dot" style="background:#a9d779"></i>Позитивные</span>
+        <span><i class="legend-dot" style="background:#e8d98b"></i>Нейтральные</span>
+        <span><i class="legend-dot" style="background:#e7a29a"></i>Негативные</span>
+      </div>
+
+      <div class="sentiment-title">
+        <span>Частые темы</span>
+        <span>Количество упоминаний</span>
+      </div>
+
+      <div class="topic-list">
+
+        <div class="topic-row">
+          <span>Обслуживание</span>
+          <div class="topic-track">
+            <div class="topic-fill" style="--width:90%"></div>
+          </div>
+          <strong>90</strong>
+        </div>
+
+        <div class="topic-row">
+          <span>Качество</span>
+          <div class="topic-track">
+            <div class="topic-fill" style="--width:75%"></div>
+          </div>
+          <strong>75</strong>
+        </div>
+
+        <div class="topic-row">
+          <span>Цена</span>
+          <div class="topic-track">
+            <div class="topic-fill" style="--width:58%"></div>
+          </div>
+          <strong>58</strong>
+        </div>
+
+        <div class="topic-row">
+          <span>Скорость</span>
+          <div class="topic-track">
+            <div class="topic-fill" style="--width:42%"></div>
+          </div>
+          <strong>42</strong>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <span class="eyebrow">ПРОСТОЙ ПРОЦЕСС</span>
+
+      <h2>
+        От отзывов<br>
+        к <span class="highlight">понятным решениям.</span>
+      </h2>
+
+      <p>
+        Без сложных внедрений и долгих согласований.
+        Каждый этап понятен заранее.
+      </p>
+    </div>
+
+    <div class="process-grid">
+
+      <article class="process-card reveal">
+        <span class="process-number">01 / ЗАПРОС</span>
+        <h3>Получаем данные</h3>
+        <p>
+          Определяем площадки, период анализа и получаем
+          доступные отзывы или материалы от клиента.
+        </p>
+      </article>
+
+      <article class="process-card reveal reveal-delay-1">
+        <span class="process-number">02 / АНАЛИЗ</span>
+        <h3>Изучаем отзывы</h3>
+        <p>
+          Группируем комментарии, определяем тональность
+          и ищем повторяющиеся темы.
+        </p>
+      </article>
+
+      <article class="process-card reveal reveal-delay-2">
+        <span class="process-number">03 / ВЫВОДЫ</span>
+        <h3>Формируем отчёт</h3>
+        <p>
+          Показываем сильные стороны, проблемные моменты
+          и наиболее частые замечания.
+        </p>
+      </article>
+
+      <article class="process-card reveal reveal-delay-3">
+        <span class="process-number">04 / РЕЗУЛЬТАТ</span>
+        <h3>Даём рекомендации</h3>
+        <p>
+          Передаём структурированный материал,
+          с которым можно работать дальше.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="pricing">
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <span class="eyebrow">ПРОЗРАЧНАЯ СТОИМОСТЬ</span>
+
+      <h2>
+        Выберите подходящий<br>
+        <span class="highlight">формат работы.</span>
+      </h2>
+
+      <p>
+        Стоимость зависит от объёма отзывов, количества площадок
+        и сложности анализа.
+      </p>
     </div>
 
     <div class="pricing-grid">
-      <article class="price-card reveal">
-        <div class="plan-name">MINI</div>
-        <div class="price">1 500 ₽</div>
-        <p class="muted">Для первого знакомства с ситуацией</p>
-        <ul class="check-list">
-          <li>До 30 отзывов</li>
-          <li>Основные проблемы</li>
-          <li>Краткий отчёт</li>
-          <li>Главные рекомендации</li>
-        </ul>
-        <button class="btn btn-outline choose-plan" data-plan="MINI" data-price="1500">Выбрать MINI</button>
-      </article>
-
-      <article class="price-card featured reveal">
-        <div class="popular">ПОПУЛЯРНЫЙ ВАРИАНТ</div>
-        <div class="plan-name">STANDARD</div>
-        <div class="price">2 500 ₽</div>
-        <p class="muted">Для понимания сильных и слабых сторон</p>
-        <ul class="check-list">
-          <li>До 100 отзывов</li>
-          <li>Категории проблем</li>
-          <li>Графики и статистика</li>
-          <li>5 вариантов ответов</li>
-          <li>Практические рекомендации</li>
-        </ul>
-        <button class="btn btn-primary choose-plan" data-plan="STANDARD" data-price="2500">Выбрать STANDARD</button>
-      </article>
 
       <article class="price-card reveal">
-        <div class="plan-name">BUSINESS</div>
-        <div class="price">4 500 ₽</div>
-        <p class="muted">Для системной работы с репутацией</p>
-        <ul class="check-list">
-          <li>До 300 отзывов</li>
-          <li>Расширенная аналитика</li>
-          <li>Сравнение с конкурентами</li>
-          <li>15 вариантов ответов</li>
-          <li>План улучшения репутации</li>
+        <div class="price-name">Старт</div>
+
+        <div class="price-value">1 490 ₽</div>
+
+        <p class="price-description">
+          Для небольшого бизнеса, которому нужен первый разбор отзывов.
+        </p>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li>Анализ до 50 отзывов</li>
+          <li>Определение тональности</li>
+          <li>Поиск основных проблем</li>
+          <li>Краткий итоговый отчёт</li>
         </ul>
-        <button class="btn btn-outline choose-plan" data-plan="BUSINESS" data-price="4500">Выбрать BUSINESS</button>
+
+        <a href="#contact" class="btn btn-dark">
+          Выбрать пакет <span class="btn-arrow">↗</span>
+        </a>
       </article>
 
-      <article class="price-card reveal">
-        <div class="plan-name">PREMIUM</div>
-        <div class="price">7 500 ₽</div>
-        <p class="muted">Максимально подробный разбор</p>
-        <ul class="check-list">
-          <li>До 500 отзывов</li>
-          <li>Подробная аналитика</li>
-          <li>Сравнение с конкурентами</li>
-          <li>30 вариантов ответов</li>
-          <li>Индивидуальная стратегия</li>
-          <li>Приоритетная обработка</li>
+      <article class="price-card featured reveal reveal-delay-1">
+        <span class="price-popular">Оптимальный выбор</span>
+
+        <div class="price-name">Бизнес</div>
+
+        <div class="price-value">3 490 ₽</div>
+
+        <p class="price-description">
+          Более подробная картина клиентского опыта и репутации.
+        </p>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li>Анализ до 200 отзывов</li>
+          <li>Группировка по темам</li>
+          <li>Сильные и слабые стороны</li>
+          <li>Поиск повторяющихся жалоб</li>
+          <li>Подробный отчёт</li>
+          <li>Рекомендации по улучшению</li>
         </ul>
-        <button class="btn btn-outline choose-plan" data-plan="PREMIUM" data-price="7500">Выбрать PREMIUM</button>
+
+        <a href="#contact" class="btn">
+          Выбрать пакет <span class="btn-arrow">↗</span>
+        </a>
       </article>
+
+      <article class="price-card reveal reveal-delay-2">
+        <div class="price-name">Расширенный</div>
+
+        <div class="price-value">6 990 ₽</div>
+
+        <p class="price-description">
+          Для бизнеса с большим количеством обратной связи.
+        </p>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li>Анализ до 500 отзывов</li>
+          <li>Сравнение нескольких площадок</li>
+          <li>Подробная классификация тем</li>
+          <li>Анализ сильных и слабых сторон</li>
+          <li>Расширенный отчёт</li>
+          <li>Приоритетные рекомендации</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-dark">
+          Выбрать пакет <span class="btn-arrow">↗</span>
+        </a>
+      </article>
+
     </div>
-    <p class="small-note">Стоимость и объём работы предварительные. Итоговые условия согласовываются до начала заказа и зависят от доступности отзывов.</p>
+
+    <p class="price-footnote">
+      Цены ориентировочные. Итоговая стоимость согласовывается до начала работы.
+      Объём анализа зависит от доступности и формата исходных данных.
+    </p>
+
   </div>
 </section>
 
-<section class="section section-alt" id="addons">
+<section class="section" id="addons">
   <div class="wrap">
+
     <div class="section-head reveal">
-      <div class="eyebrow">ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ</div>
-      <h2>Больше возможностей <span class="accent">для бизнеса</span></h2>
-      <p>Можно добавить к основному заказу отдельные услуги.</p>
+      <span class="eyebrow">ДОПОЛНИТЕЛЬНЫЕ ВОЗМОЖНОСТИ</span>
+
+      <h2>
+        Больше пользы<br>
+        <span class="highlight">для вашего бизнеса.</span>
+      </h2>
+
+      <p>
+        Дополнительные услуги можно подключить к основному анализу
+        или заказать отдельно.
+      </p>
     </div>
 
     <div class="addons-grid">
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">01</span><span class="addon-price">от 12 000 ₽</span></div>
-        <h3>Разработка сайта</h3>
-        <p>Одностраничный сайт с описанием бизнеса, услугами, контактами и формой заявки.</p>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">02</span><span class="addon-price">2 500 ₽</span></div>
-        <h3>Форма заявок</h3>
-        <p>Настройка удобной формы для получения обращений от клиентов.</p>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">03</span><span class="addon-price">3 000 ₽</span></div>
-        <h3>Оформление профиля</h3>
-        <p>Помощь с представлением компании и её услуг на онлайн-площадках.</p>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">04</span><span class="addon-price">3 500 ₽</span></div>
-        <h3>Анализ конкурентов</h3>
-        <p>Сравнение отзывов, оценок и заметных преимуществ других компаний.</p>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">05</span><span class="addon-price">1 000 ₽</span></div>
-        <h3>Дополнительные отзывы</h3>
-        <p>Анализ ещё 100 отзывов, если они доступны для изучения.</p>
-      </div>
-      <div class="addon reveal">
-        <div class="addon-top"><span class="addon-icon">06</span><span class="addon-price">2 990 ₽/мес.</span></div>
-        <h3>Ежемесячный отчёт</h3>
-        <p>Регулярный обзор новых отзывов и изменений в обратной связи клиентов.</p>
-      </div>
+
+      <article class="addon-card reveal">
+        <div>
+          <h3>Разработка сайта</h3>
+          <p>Современный сайт с информацией об услугах и контактами.</p>
+        </div>
+        <span class="addon-price">от 12 000 ₽</span>
+      </article>
+
+      <article class="addon-card reveal reveal-delay-1">
+        <div>
+          <h3>Анализ конкурентов</h3>
+          <p>Изучение отзывов и сильных сторон других компаний.</p>
+        </div>
+        <span class="addon-price">3 500 ₽</span>
+      </article>
+
+      <article class="addon-card reveal reveal-delay-2">
+        <div>
+          <h3>Презентация бизнеса</h3>
+          <p>Структурированная презентация компании и её преимуществ.</p>
+        </div>
+        <span class="addon-price">3 000 ₽</span>
+      </article>
+
+      <article class="addon-card reveal">
+        <div>
+          <h3>Дополнительные отзывы</h3>
+          <p>Расширение объёма анализа на каждые дополнительные 100 отзывов.</p>
+        </div>
+        <span class="addon-price">1 000 ₽</span>
+      </article>
+
+      <article class="addon-card reveal reveal-delay-1">
+        <div>
+          <h3>Ежемесячный отчёт</h3>
+          <p>Регулярный анализ новых отзывов и изменений в обратной связи.</p>
+        </div>
+        <span class="addon-price">2 990 ₽/мес.</span>
+      </article>
+
+      <article class="addon-card reveal reveal-delay-2">
+        <div>
+          <h3>Индивидуальный проект</h3>
+          <p>Нестандартные задачи и дополнительные виды аналитики.</p>
+        </div>
+        <span class="addon-price">По запросу</span>
+      </article>
+
     </div>
   </div>
 </section>
 
-<section class="section" id="calculator">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">КАЛЬКУЛЯТОР ЗАКАЗА</div>
-      <h2>Соберите свой <span class="accent">вариант</span></h2>
-      <p>Выберите тариф и дополнительные услуги — стоимость обновится автоматически.</p>
+<section class="section section-alt" id="faq">
+  <div class="wrap faq-layout">
+
+    <div class="faq-intro reveal">
+      <span class="eyebrow">ВОПРОСЫ И ОТВЕТЫ</span>
+
+      <h2>
+        Остались<br>
+        вопросы?
+      </h2>
+
+      <p>
+        Собрали ответы на то, что важно знать перед заказом анализа.
+      </p>
     </div>
 
-    <div class="calc reveal">
-      <div class="calc-left">
-        <label for="planSelect">Основной тариф</label>
-        <select id="planSelect" class="field">
-          <option value="1500">MINI — 1 500 ₽</option>
-          <option value="2500" selected>STANDARD — 2 500 ₽</option>
-          <option value="4500">BUSINESS — 4 500 ₽</option>
-          <option value="7500">PREMIUM — 7 500 ₽</option>
-        </select>
+    <div class="faq-list reveal reveal-delay-1">
 
-        <div class="calc-options">
-          <label class="option"><input type="checkbox" class="addon-check" value="2500" data-name="Форма заявок"> Форма заявок <span>+2 500 ₽</span></label>
-          <label class="option"><input type="checkbox" class="addon-check" value="3000" data-name="Оформление профиля"> Оформление профиля <span>+3 000 ₽</span></label>
-          <label class="option"><input type="checkbox" class="addon-check" value="3500" data-name="Анализ конкурентов"> Анализ конкурентов <span>+3 500 ₽</span></label>
-          <label class="option"><input type="checkbox" class="addon-check" value="1000" data-name="Дополнительные 100 отзывов"> Дополнительные 100 отзывов <span>+1 000 ₽</span></label>
-          <label class="option"><input type="checkbox" class="addon-check" value="2990" data-name="Ежемесячный отчёт"> Ежемесячный отчёт <span>+2 990 ₽</span></label>
-          <label class="option"><input type="checkbox" class="addon-check" value="12000" data-name="Разработка сайта"> Разработка сайта <span>от 12 000 ₽</span></label>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Что именно вы анализируете?
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Анализируем отзывы клиентов: их тональность, повторяющиеся
+            темы, сильные стороны компании и проблемные моменты.
+            Итогом становится структурированный отчёт.
+          </p>
         </div>
       </div>
 
-      <div class="calc-right">
-        <div class="calc-label">Предварительная стоимость</div>
-        <div class="calc-total" id="calcTotal">2 500 ₽</div>
-        <p class="muted">Финальная стоимость согласовывается после обсуждения задачи.</p>
-        <button class="btn btn-primary" id="calcOrder">Оформить заявку</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="process">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">КАК МЫ РАБОТАЕМ</div>
-      <h2>От заявки до <span class="accent">результата</span></h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><span>01</span><h3>Заявка</h3><p>Вы оставляете контакты и ссылку на компанию.</p></div>
-      <div class="step reveal"><span>02</span><h3>Обсуждение</h3><p>Уточняем задачу, объём и доступность данных.</p></div>
-      <div class="step reveal"><span>03</span><h3>Анализ</h3><p>Изучаем отзывы и готовим структурированный отчёт.</p></div>
-      <div class="step reveal"><span>04</span><h3>Результат</h3><p>Передаём материалы и рекомендации по работе с отзывами.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="faq">
-  <div class="wrap faq-wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">ВОПРОСЫ И ОТВЕТЫ</div>
-      <h2>Что важно <span class="accent">знать</span></h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-question">Какие отзывы вы анализируете?<span>+</span></button>
-        <div class="faq-answer"><p>Публичные отзывы на доступных площадках. Перед началом проверяем, можно ли получить необходимые данные.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-question">Вы удаляете негативные отзывы?<span>+</span></button>
-        <div class="faq-answer"><p>Нет. Мы не обещаем удаление отзывов или искусственное повышение рейтинга. Наша задача — разобраться в обратной связи и помочь компании улучшить работу с клиентами.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-question">Как я получу результат?<span>+</span></button>
-        <div class="faq-answer"><p>Формат и срок передачи отчёта согласовываются перед началом работы.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-question">Можно ли заказать только сайт?<span>+</span></button>
-        <div class="faq-answer"><p>Да. Разработку сайта можно обсудить как отдельную услугу.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section section-alt" id="contact">
-  <div class="wrap">
-    <div class="contact reveal">
-      <div class="contact-info">
-        <div class="eyebrow">НАЧНЁМ РАБОТУ</div>
-        <h2>Обсудим задачу <span class="accent">вашего бизнеса</span></h2>
-        <p>Оставьте заявку. Мы свяжемся с вами, уточним детали и предложим подходящий вариант работы.</p>
-        <div class="contact-detail">
-          <span>01</span>
-          <div><strong>Без обязательств</strong><p>Заявка не обязывает вас к покупке.</p></div>
-        </div>
-        <div class="contact-detail">
-          <span>02</span>
-          <div><strong>Индивидуальный подход</strong><p>Учитываем особенности вашей компании.</p></div>
-        </div>
-        <div class="contact-detail">
-          <span>03</span>
-          <div><strong>Понятные условия</strong><p>Согласовываем объём и стоимость заранее.</p></div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Нужно ли давать доступ к аккаунтам?
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Обычно нет. Можно предоставить ссылки на открытые отзывы
+            или передать материалы самостоятельно. Пароли и личные
+            доступы для обычного анализа не требуются.
+          </p>
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm">
-        <h3>Оставить заявку</h3>
-        <label for="businessName">Название компании</label>
-        <input class="field" id="businessName" name="businessName" placeholder="Например, кофейня «Север»" required>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Сколько занимает работа?
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Срок зависит от объёма и сложности материалов.
+            Конкретное время согласовывается до начала работы.
+          </p>
+        </div>
+      </div>
 
-        <label for="contactValue">Как с вами связаться?</label>
-        <input class="field" id="contactValue" name="contact" placeholder="Telegram, телефон или другой контакт" required>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Можно ли гарантировать рост рейтинга?
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Нет. Мы не обещаем искусственное повышение оценок.
+            Наша задача — помочь разобраться в обратной связи
+            и определить направления для улучшения бизнеса.
+          </p>
+        </div>
+      </div>
 
-        <label for="websiteValue">Ссылка на компанию</label>
-        <input class="field" id="websiteValue" name="website" placeholder="Ссылка на сайт или отзывы">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Как происходит оплата?
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Условия и способ оплаты согласовываются индивидуально
+            до начала выполнения заказа.
+          </p>
+        </div>
+      </div>
 
-        <label for="detailsValue">Комментарий</label>
-        <textarea class="field" id="detailsValue" name="details" rows="3" placeholder="Что именно вас интересует?"></textarea>
-
-        <div class="form-summary" id="formSummary">Выбран тариф STANDARD — 2 500 ₽</div>
-        <button class="btn btn-primary submit-btn" type="submit" id="submitBtn">Отправить заявку <span>↗</span></button>
-        <p class="form-status" id="formStatus" role="status"></p>
-        <p class="form-privacy">Нажимая кнопку, вы соглашаетесь на обработку указанных данных для ответа на заявку.</p>
-      </form>
     </div>
   </div>
 </section>
+
+<section class="final-cta" id="contact">
+  <div class="wrap cta-inner">
+
+    <div>
+      <span class="eyebrow">СЛЕДУЮЩИЙ ШАГ</span>
+
+      <h2>
+        Пора понять,<br>
+        что говорят ваши клиенты.
+      </h2>
+
+      <p>
+        Выберите подходящий формат анализа и обсудите задачу.
+        Без лишних обещаний — только понятная работа с обратной связью.
+      </p>
+    </div>
+
+    <a href="#pricing" class="btn">
+      Посмотреть тарифы <span class="btn-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+</main>
 
 <footer class="footer">
-  <div class="wrap footer-row">
-    <div class="footer-brand">
-      <a href="#" class="logo"><span class="logo-mark">О</span> ОТЗЫВЫ<span class="accent">КОНТРОЛЬ</span></a>
-      <p>Аналитика отзывов и инструменты для развития бизнеса.</p>
+  <div class="wrap">
+
+    <div class="footer-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">↗</span>
+        <span>Отзывы под контролем</span>
+      </a>
+
+      <div class="footer-copy">
+        Аналитика отзывов и репутации бизнеса.<br>
+        Работаем с доступными данными и обратной связью.
+      </div>
     </div>
-    <div class="footer-copy">© 2026 Отзывы под контролем</div>
-    <a href="#top" class="back-top">Наверх ↑</a>
+
+    <div class="footer-bottom">
+      © 2026 Отзывы под контролем. Все права защищены.
+      Представленные на сайте аналитические показатели являются демонстрационными
+      и не отражают реальные данные клиентов.
+      Услуги не предполагают публикацию фиктивных отзывов,
+      искусственное изменение рейтингов или нарушение правил площадок.
+    </div>
+
   </div>
 </footer>
-
 <script>
-const WORKER_URL = "https://steep-hill-64ea.borisovnaevgenia725.workers.dev";
+/* МОБИЛЬНОЕ МЕНЮ */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
 
-if (menuBtn && navLinks) {
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+
+    menuToggle.textContent =
+      mainNav.classList.contains('open') ? '×' : '☰';
   });
 
-  navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => navLinks.classList.remove("show"));
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuToggle.textContent = '☰';
+    });
   });
 }
 
-const revealItems = document.querySelectorAll(".reveal");
+/* ПОЯВЛЕНИЕ БЛОКОВ ПРИ ПРОКРУТКЕ */
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  document.body.classList.add('js-ready');
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
+        entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-
-  revealItems.forEach(item => observer.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add("visible"));
-}
-
-document.querySelectorAll(".faq-question").forEach(button => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".faq-item");
-    item.classList.toggle("active");
-  });
-});
-
-const planSelect = document.getElementById("planSelect");
-const addonChecks = document.querySelectorAll(".addon-check");
-const calcTotal = document.getElementById("calcTotal");
-const formSummary = document.getElementById("formSummary");
-
-let selectedPlan = "STANDARD";
-
-function getTotal() {
-  let total = Number(planSelect.value);
-
-  addonChecks.forEach(check => {
-    if (check.checked) total += Number(check.value);
+  }, {
+    threshold: 0.12
   });
 
-  return total;
-}
-
-function getSelectedAddons() {
-  return Array.from(addonChecks)
-    .filter(check => check.checked)
-    .map(check => check.dataset.name);
-}
-
-function updateCalculator() {
-  const total = getTotal();
-  calcTotal.textContent = total.toLocaleString("ru-RU") + " ₽";
-
-  const option = planSelect.options[planSelect.selectedIndex];
-  selectedPlan = option.text.split(" — ")[0];
-
-  const addons = getSelectedAddons();
-  formSummary.textContent =
-    "Тариф " + selectedPlan + " — " +
-    Number(planSelect.value).toLocaleString("ru-RU") + " ₽" +
-    (addons.length ? ". Дополнительно: " + addons.join(", ") : "") +
-    ". Итого: " + total.toLocaleString("ru-RU") + " ₽";
-}
-
-planSelect.addEventListener("change", updateCalculator);
-addonChecks.forEach(check => check.addEventListener("change", updateCalculator));
-
-document.querySelectorAll(".choose-plan").forEach(button => {
-  button.addEventListener("click", () => {
-    const price = button.dataset.price;
-    planSelect.value = price;
-    updateCalculator();
-    document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
   });
-});
+}
 
-document.getElementById("calcOrder").addEventListener("click", () => {
-  updateCalculator();
-  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-});
+/* FAQ — РАСКРЫТИЕ ОТВЕТОВ */
 
-const contactForm = document.getElementById("contactForm");
-const submitBtn = document.getElementById("submitBtn");
-const formStatus = document.getElementById("formStatus");
+const faqItems = document.querySelectorAll('.faq-item');
 
-contactForm.addEventListener("submit", async event => {
-  event.preventDefault();
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  const answer = item.querySelector('.faq-answer');
 
-  const business = document.getElementById("businessName").value.trim();
-  const contact = document.getElementById("contactValue").value.trim();
-  const website = document.getElementById("websiteValue").value.trim();
-  const details = document.getElementById("detailsValue").value.trim();
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
 
-  if (!business || !contact) {
-    formStatus.textContent = "Заполните название компании и контакт.";
-    return;
-  }
+    faqItems.forEach(otherItem => {
+      otherItem.classList.remove('active');
 
-  const addons = getSelectedAddons();
-  const total = getTotal();
+      const otherQuestion = otherItem.querySelector('.faq-question');
+      const otherAnswer = otherItem.querySelector('.faq-answer');
 
-  const payload = {
-    place:
-      "Компания: " + business +
-      "\nКонтакт: " + contact +
-      "\nТариф: " + selectedPlan +
-      "\nДополнительные услуги: " + (addons.join(", ") || "Нет") +
-      "\nПредварительная сумма: " + total + " ₽" +
-      "\nКомментарий: " + (details || "Нет"),
-    url: website || "Не указана"
-  };
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Отправляем...";
-  formStatus.textContent = "";
-
-  try {
-    const response = await fetch(WORKER_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      otherQuestion.setAttribute('aria-expanded', 'false');
+      otherAnswer.style.maxHeight = null;
     });
 
-    const result = await response.json();
-
-    if (!response.ok || result.success === false || result.error) {
-      throw new Error(result.error || "Ошибка отправки заявки");
+    if (!isActive) {
+      item.classList.add('active');
+      question.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
     }
-
-    formStatus.textContent = "Заявка отправлена. Спасибо!";
-    contactForm.reset();
-    updateCalculator();
-  } catch (error) {
-    console.error(error);
-    formStatus.textContent =
-      "Не удалось отправить заявку. Попробуйте позже или свяжитесь с нами напрямую.";
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = 'Отправить заявку <span>↗</span>';
-  }
+  });
 });
 
-updateCalculator();
+/* ПЛАВНЫЙ ПЕРЕХОД ПО ЯКОРЯМ */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    const targetId = link.getAttribute('href');
+
+    if (!targetId || targetId === '#') return;
+
+    const target = document.querySelector(targetId);
+
+    if (target) {
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+/* АНИМАЦИЯ ГРАФИКА ПРИ ЗАГРУЗКЕ */
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.chart-bar').forEach((bar, index) => {
+    bar.style.animationDelay = (index * 0.07) + 's';
+  });
+});
+
+/* ОБНОВЛЕНИЕ ВЫСОТЫ FAQ ПРИ ИЗМЕНЕНИИ РАЗМЕРА */
+
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  });
+});
 </script>
-</main>
+
 </body>
 </html>
